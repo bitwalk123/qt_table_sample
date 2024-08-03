@@ -11,6 +11,8 @@ from PySide6.QtCore import (
 
 
 class PandasModel(QAbstractTableModel):
+    __version__ = '0.0.1'
+
     def __init__(self, df: pd.DataFrame):
         super().__init__()
         self._df = df
