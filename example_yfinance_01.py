@@ -1,18 +1,13 @@
 import sys
 import yfinance as yf
-from PySide6.QtCore import Qt
 
 from PySide6.QtWidgets import (
-    QAbstractButton,
     QApplication,
-    QLabel,
     QMainWindow,
-    QTableView,
-    QVBoxLayout,
 )
 
 from models.model_yfinance import YFinanceModel
-from tables.tableview_yfinance import YFinanceTableView
+from tables.tableview_pandas import PandasTableView
 
 
 class Example(QMainWindow):
@@ -20,16 +15,18 @@ class Example(QMainWindow):
         super().__init__()
         self.setWindowTitle('yfinance test')
 
-        table = YFinanceTableView()
-        self.setCentralWidget(table)
+        tbl = PandasTableView()
+        self.setCentralWidget(tbl)
 
         ticker = yf.Ticker('^DJI')
         df = ticker.history(period='1mo')
-        index_name = df.index.name
-        if index_name != '':
-            table.setUpperLeftCornerTitle(index_name)
+
+        name_index = df.index.name
+        if name_index != '':
+            tbl.setUpperLeftCornerTitle(name_index)
+
         model = YFinanceModel(df)
-        table.setModel(model)
+        tbl.setModel(model)
 
 
 def main():

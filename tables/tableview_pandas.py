@@ -19,7 +19,7 @@ def add_label(but: QAbstractButton):
     return label
 
 
-class YFinanceTableView(QTableView):
+class PandasTableView(QTableView):
     __version__ = '0.0.1'
 
     def __init__(self):

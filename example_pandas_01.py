@@ -3,10 +3,10 @@ import pandas as pd
 from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
-    QTableView,
 )
 
 from models.model_pandas import PandasModel
+from tables.tableview_pandas import PandasTableView
 
 
 class Example(QMainWindow):
@@ -14,8 +14,8 @@ class Example(QMainWindow):
         super().__init__()
         self.setWindowTitle('df test')
 
-        table = QTableView()
-        self.setCentralWidget(table)
+        tbl = PandasTableView()
+        self.setCentralWidget(tbl)
 
         df = pd.DataFrame(
             [
@@ -29,8 +29,12 @@ class Example(QMainWindow):
             index=['Row 1', 'Row 2', 'Row 3', 'Row 4', 'Row 5']
         )
 
+        name_index = df.index.name
+        if name_index != '':
+            tbl.setUpperLeftCornerTitle(name_index)
+
         model = PandasModel(df)
-        table.setModel(model)
+        tbl.setModel(model)
 
 
 def main():
