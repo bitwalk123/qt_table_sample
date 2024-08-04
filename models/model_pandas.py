@@ -38,6 +38,9 @@ class PandasModel(QAbstractTableModel):
             else:
                 return Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter
 
+    def getDataFrame(self) -> pd.DataFrame:
+        return self._df
+
     def headerData(self, section: int, orientation: Qt.Orientation, role: int = ...) -> Any:
         if role == Qt.ItemDataRole.DisplayRole:
             if orientation == Qt.Orientation.Horizontal:
