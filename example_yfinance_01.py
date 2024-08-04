@@ -3,7 +3,7 @@ import yfinance as yf
 
 from PySide6.QtWidgets import (
     QApplication,
-    QMainWindow,
+    QMainWindow, QHeaderView,
 )
 
 from models.model_yfinance import YFinanceModel
@@ -27,6 +27,7 @@ class Example(QMainWindow):
 
         model = YFinanceModel(df)
         tbl.setModel(model)
+        # tbl.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
 
 
 def main():
