@@ -15,8 +15,6 @@ from models.model_yfinance import YFinanceModel
 from tables.tableview_yfinance import YFinanceTableView
 
 
-
-
 class Example(QMainWindow):
     def __init__(self):
         super().__init__()

@@ -1,5 +1,12 @@
+from typing import Union
+
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QTableView, QAbstractButton, QVBoxLayout, QLabel
+from PySide6.QtWidgets import (
+    QAbstractButton,
+    QLabel,
+    QTableView,
+    QVBoxLayout,
+)
 
 
 def add_label(but: QAbstractButton):
@@ -27,7 +34,7 @@ class YFinanceTableView(QTableView):
                 border-style: outset;
             }
         """)
-        but = self.findChild(QAbstractButton, '')
+        but: Union[object, QAbstractButton] = self.findChild(QAbstractButton, '')
         if type(but) is QAbstractButton:
             self.label = add_label(but)
         else:
