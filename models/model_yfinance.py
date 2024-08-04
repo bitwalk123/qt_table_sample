@@ -26,14 +26,13 @@ class YFinanceModel(PandasModel):
         value = self._df.iloc[row, col]
 
         if role == Qt.ItemDataRole.DisplayRole:
-            if (type(value) is np.int64) | (type(value) is np.float64):
+            if type(value) is np.float64:
                 return '%.2f' % value
             else:
                 return str(value)
 
         if role == Qt.ItemDataRole.TextAlignmentRole:
             if (type(value) is np.int64) | (type(value) is np.float64):
-                flag = Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter
+                return Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter
             else:
-                flag = Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter
-            return flag
+                return Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter

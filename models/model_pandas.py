@@ -34,10 +34,9 @@ class PandasModel(QAbstractTableModel):
 
         if role == Qt.ItemDataRole.TextAlignmentRole:
             if (type(value) is np.int64) | (type(value) is np.float64):
-                flag = Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter
+                return Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter
             else:
-                flag = Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter
-            return flag
+                return Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter
 
     def headerData(self, section: int, orientation: Qt.Orientation, role: int = ...) -> Any:
         if role == Qt.ItemDataRole.DisplayRole:
